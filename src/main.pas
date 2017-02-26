@@ -13,6 +13,9 @@ uses
   // Cutom
   updater, globals;
 
+const
+  UM_AFTERSHOW = WM_APP + 1;
+
 type
   TLauncherForm = class(TForm)
     btnClose: TcySkinButton;
@@ -26,12 +29,12 @@ type
     procedure btnLaunchKPClick(Sender: TObject);
     procedure btnVisitSiteClick(Sender: TObject);
     procedure btnReportBugClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     procedure launchUpdater(aCurrentVersion, aNewVersion: string);
     procedure openURL(aURL: string);
-  public
-    { Public declarations }
+  protected
+    procedure UMAfterShow(var Msg: TMessage); message UM_AFTERSHOW;
+    procedure DoShow; override;
   end;
 
 var
@@ -40,18 +43,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TLauncherForm.FormCreate(Sender: TObject);
-var
-  newVersion: string;
-  oldVersion: string;
-begin
-  newVersion := DownloadToString(KP_VERSION_FILE_PATH);
-  oldVersion := TFile.ReadAllText(ExtractFilePath(Application.ExeName) + KP_VERSION_FILE_NAME);
-
-  if (newVersion <> '') and (AnsiCompareText(newVersion, oldVersion) <> 0) then
-    launchUpdater(oldVersion, newVersion);
-end;
 
 procedure TLauncherForm.launchUpdater(aCurrentVersion, aNewVersion: string);
 var
@@ -81,6 +72,25 @@ begin
     ReleaseCapture;
     Perform(WM_SYSCOMMAND, SC_DRAGMOVE, 0);
   end;
+end;
+
+procedure TLauncherForm.DoShow;
+begin
+  inherited;
+
+  PostMessage(Self.Handle, UM_AFTERSHOW, 0, 0);
+end;
+
+procedure TLauncherForm.UMAfterShow(var Msg: TMessage);
+var
+  newVersion: string;
+  oldVersion: string;
+begin
+  newVersion := DownloadToString(KP_VERSION_FILE_PATH);
+  oldVersion := TFile.ReadAllText(ExtractFilePath(Application.ExeName) + KP_VERSION_FILE_NAME);
+
+  if (newVersion <> '') and (AnsiCompareText(newVersion, oldVersion) <> 0) then
+    launchUpdater(oldVersion, newVersion);
 end;
 
 procedure TLauncherForm.btnLaunchKPClick(Sender: TObject);

@@ -13,6 +13,7 @@ object UpdateForm: TUpdateForm
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnMouseDown = FormMouseDown
   PixelsPerInch = 96
   TextHeight = 13
   object btnClose: TcySkinButton
@@ -382,6 +383,7 @@ object UpdateForm: TUpdateForm
     Font.Name = 'Book Antiqua'
     Font.Style = []
     ParentFont = False
+    OnMouseDown = FormMouseDown
   end
   object Label2: TLabel
     Left = 17

@@ -19,7 +19,6 @@ object LauncherForm: TLauncherForm
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
   OnMouseDown = FormMouseDown
   PixelsPerInch = 96
   TextHeight = 13
@@ -183,6 +182,7 @@ object LauncherForm: TLauncherForm
       A488BA1EE01F833EF9535CC367BA7D4456AE3674CF134212C69BE27A99A4038D
       1AE62160CF19EB8EA57B9E10923433A6B836FF07F8BA672BDECA690F00000000
       49454E44AE426082}
+    OnMouseDown = FormMouseDown
   end
   object btnClose: TcySkinButton
     Left = 280

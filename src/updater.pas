@@ -27,6 +27,8 @@ type
     lblStatus: TLabel;
     procedure btnCloseClick(Sender: TObject);
     procedure btnUpdateClick(Sender: TObject);
+    procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
+                            Shift: TShiftState; X, Y: Integer);
   private
     fZipFileName: string;
     fNewVersion:  string;
@@ -70,6 +72,18 @@ begin
   end;
 
   Result := True;
+end;
+
+procedure TUpdateForm.FormMouseDown(Sender: TObject; Button: TMouseButton;
+                                    Shift: TShiftState; X, Y: Integer);
+const
+  SC_DRAGMOVE = $F012;
+begin
+  if Button = mbLeft then
+  begin
+    ReleaseCapture;
+    Perform(WM_SYSCOMMAND, SC_DRAGMOVE, 0);
+  end;
 end;
 
 procedure TUpdateForm.btnCloseClick(Sender: TObject);
