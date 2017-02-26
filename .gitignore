@@ -1,0 +1,16 @@
+*.exe
+*.identcache
+*.local
+*.log
+*.mi
+*.ppu
+*.o
+*.compiled
+*.bak
+*.or
+*.a
+*.rsj
+*.tvsconfig
+*.dcu
+__history
+*.stat
