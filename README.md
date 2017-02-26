@@ -6,6 +6,7 @@ It will play the role of euto-updating the game and providing a few links to the
 Requirements:
   * RAD Studio XE2+ (I think)
   * Cindy components for Delphi
+  * madCollection (madExcept)
 
 How to contribute:
   * Fork this repository
@@ -21,3 +22,7 @@ TODO:
   * Overall cleanup.
 
 Knights Province official website: [knightsprovince.com](http://knightsprovince.com)
+
+Forms:  
+Launcher: [![Launcher Form](https://github.com/thibmo/KP_Launcher/blob/master/Misc/LauncherForm.png?raw=true)]  
+Updater: [![Launcher Form](https://github.com/thibmo/KP_Launcher/blob/master/Misc/UpdaterForm.png?raw=true)]

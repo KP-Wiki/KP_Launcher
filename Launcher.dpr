@@ -1,6 +1,11 @@
 program Launcher;
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   Vcl.Forms,
   main in 'src\main.pas' {LauncherForm},
   updater in 'src\updater.pas' {UpdateForm},
@@ -12,6 +17,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TLauncherForm, LauncherForm);
-  Application.CreateForm(TUpdateForm, UpdateForm);
   Application.Run;
 end.
